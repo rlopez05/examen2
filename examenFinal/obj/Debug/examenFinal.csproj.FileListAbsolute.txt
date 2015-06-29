@@ -28,3 +28,33 @@ C:\Examenfinal\examenFinal\examenFinal\bin\Newtonsoft.Json.xml
 C:\Examenfinal\examenFinal\examenFinal\obj\Debug\examenFinal.csprojResolveAssemblyReference.cache
 C:\Examenfinal\examenFinal\examenFinal\obj\Debug\examenFinal.dll
 C:\Examenfinal\examenFinal\examenFinal\obj\Debug\examenFinal.pdb
+C:\New folder\examenFinal\bin\examenFinal.dll.config
+C:\New folder\examenFinal\bin\examenFinal.dll
+C:\New folder\examenFinal\bin\examenFinal.pdb
+C:\New folder\examenFinal\bin\Antlr3.Runtime.dll
+C:\New folder\examenFinal\bin\EntityFramework.dll
+C:\New folder\examenFinal\bin\EntityFramework.SqlServer.dll
+C:\New folder\examenFinal\bin\Microsoft.Web.Infrastructure.dll
+C:\New folder\examenFinal\bin\Newtonsoft.Json.dll
+C:\New folder\examenFinal\bin\System.Web.Helpers.dll
+C:\New folder\examenFinal\bin\System.Web.Mvc.dll
+C:\New folder\examenFinal\bin\System.Web.Optimization.dll
+C:\New folder\examenFinal\bin\System.Web.Razor.dll
+C:\New folder\examenFinal\bin\System.Web.WebPages.Deployment.dll
+C:\New folder\examenFinal\bin\System.Web.WebPages.dll
+C:\New folder\examenFinal\bin\System.Web.WebPages.Razor.dll
+C:\New folder\examenFinal\bin\WebGrease.dll
+C:\New folder\examenFinal\bin\EntityFramework.xml
+C:\New folder\examenFinal\bin\EntityFramework.SqlServer.xml
+C:\New folder\examenFinal\bin\System.Web.Helpers.xml
+C:\New folder\examenFinal\bin\System.Web.Mvc.xml
+C:\New folder\examenFinal\bin\System.Web.Optimization.xml
+C:\New folder\examenFinal\bin\System.Web.Razor.xml
+C:\New folder\examenFinal\bin\System.Web.WebPages.xml
+C:\New folder\examenFinal\bin\System.Web.WebPages.Deployment.xml
+C:\New folder\examenFinal\bin\System.Web.WebPages.Razor.xml
+C:\New folder\examenFinal\bin\Antlr3.Runtime.pdb
+C:\New folder\examenFinal\bin\Newtonsoft.Json.xml
+C:\New folder\examenFinal\obj\Debug\examenFinal.csprojResolveAssemblyReference.cache
+C:\New folder\examenFinal\obj\Debug\examenFinal.dll
+C:\New folder\examenFinal\obj\Debug\examenFinal.pdb
