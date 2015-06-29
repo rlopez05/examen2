@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamenDisenoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cotizacion">
+    <Key>
+      <PropertyRef Name="idCotizacion" />
+    </Key>
+    <Property Name="idCotizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="buque" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="viaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="manifiesto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CotizacionCobroes" Relationship="Self.FK_CotizacionCobro_Cotizacion" FromRole="Cotizacion" ToRole="CotizacionCobro" />
+  </EntityType>
+  <EntityType Name="CotizacionCobro">
+    <Key>
+      <PropertyRef Name="idCotizacionDetalle" />
+    </Key>
+    <Property Name="idCotizacionDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCotizacion" Type="Int32" Nullable="false" />
+    <Property Name="idTipoCarga" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tamano" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="alto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="ancho" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="largo" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="peso" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="idUnidadPeso" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cotizacion" Relationship="Self.FK_CotizacionCobro_Cotizacion" FromRole="CotizacionCobro" ToRole="Cotizacion" />
+    <NavigationProperty Name="CotizacionDetalleCobroes" Relationship="Self.FK_CotizacionDetalleCobro_CotizacionCobro" FromRole="CotizacionCobro" ToRole="CotizacionDetalleCobro" />
+  </EntityType>
+  <EntityType Name="CotizacionDetalleCobro">
+    <Key>
+      <PropertyRef Name="idCotizacionDetalleCobro" />
+    </Key>
+    <Property Name="idCotizacionDetalleCobro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCotizacionDetalle" Type="Int32" Nullable="false" />
+    <Property Name="idTarifa" Type="Int32" Nullable="false" />
+    <Property Name="total" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <NavigationProperty Name="CotizacionCobro" Relationship="Self.FK_CotizacionDetalleCobro_CotizacionCobro" FromRole="CotizacionDetalleCobro" ToRole="CotizacionCobro" />
+    <NavigationProperty Name="Tarifa" Relationship="Self.FK_CotizacionDetalleCobro_Tarifa" FromRole="CotizacionDetalleCobro" ToRole="Tarifa" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tarifa">
+    <Key>
+      <PropertyRef Name="idTarifa" />
+    </Key>
+    <Property Name="idTarifa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="referencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="concepto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idTipoCarga" Type="Int32" Nullable="false" />
+    <Property Name="idTipoCobro" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CotizacionDetalleCobroes" Relationship="Self.FK_CotizacionDetalleCobro_Tarifa" FromRole="Tarifa" ToRole="CotizacionDetalleCobro" />
+    <NavigationProperty Name="TipoCarga" Relationship="Self.FK_Tarifa_TipoCarga" FromRole="Tarifa" ToRole="TipoCarga" />
+    <NavigationProperty Name="TipoCobro" Relationship="Self.FK_Tarifa_TipoCobro" FromRole="Tarifa" ToRole="TipoCobro" />
+  </EntityType>
+  <EntityType Name="TipoCarga">
+    <Key>
+      <PropertyRef Name="idTipoCarga" />
+    </Key>
+    <Property Name="idTipoCarga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="referencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="preferencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tarifas" Relationship="Self.FK_Tarifa_TipoCarga" FromRole="TipoCarga" ToRole="Tarifa" />
+  </EntityType>
+  <EntityType Name="TipoCobro">
+    <Key>
+      <PropertyRef Name="idTipoCobro" />
+    </Key>
+    <Property Name="idTipoCobro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="referencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tarifas" Relationship="Self.FK_Tarifa_TipoCobro" FromRole="TipoCobro" ToRole="Tarifa" />
+  </EntityType>
+  <Association Name="FK_CotizacionCobro_Cotizacion">
+    <End Role="Cotizacion" Type="Self.Cotizacion" Multiplicity="1" />
+    <End Role="CotizacionCobro" Type="Self.CotizacionCobro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cotizacion">
+        <PropertyRef Name="idCotizacion" />
+      </Principal>
+      <Dependent Role="CotizacionCobro">
+        <PropertyRef Name="idCotizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CotizacionDetalleCobro_CotizacionCobro">
+    <End Role="CotizacionCobro" Type="Self.CotizacionCobro" Multiplicity="1" />
+    <End Role="CotizacionDetalleCobro" Type="Self.CotizacionDetalleCobro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CotizacionCobro">
+        <PropertyRef Name="idCotizacionDetalle" />
+      </Principal>
+      <Dependent Role="CotizacionDetalleCobro">
+        <PropertyRef Name="idCotizacionDetalle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CotizacionDetalleCobro_Tarifa">
+    <End Role="Tarifa" Type="Self.Tarifa" Multiplicity="1" />
+    <End Role="CotizacionDetalleCobro" Type="Self.CotizacionDetalleCobro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tarifa">
+        <PropertyRef Name="idTarifa" />
+      </Principal>
+      <Dependent Role="CotizacionDetalleCobro">
+        <PropertyRef Name="idTarifa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tarifa_TipoCarga">
+    <End Role="TipoCarga" Type="Self.TipoCarga" Multiplicity="1" />
+    <End Role="Tarifa" Type="Self.Tarifa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCarga">
+        <PropertyRef Name="idTipoCarga" />
+      </Principal>
+      <Dependent Role="Tarifa">
+        <PropertyRef Name="idTipoCarga" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tarifa_TipoCobro">
+    <End Role="TipoCobro" Type="Self.TipoCobro" Multiplicity="1" />
+    <End Role="Tarifa" Type="Self.Tarifa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCobro">
+        <PropertyRef Name="idTipoCobro" />
+      </Principal>
+      <Dependent Role="Tarifa">
+        <PropertyRef Name="idTipoCobro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExamenDisenoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cotizacions" EntityType="Self.Cotizacion" />
+    <EntitySet Name="CotizacionCobroes" EntityType="Self.CotizacionCobro" />
+    <EntitySet Name="CotizacionDetalleCobroes" EntityType="Self.CotizacionDetalleCobro" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tarifas" EntityType="Self.Tarifa" />
+    <EntitySet Name="TipoCargas" EntityType="Self.TipoCarga" />
+    <EntitySet Name="TipoCobroes" EntityType="Self.TipoCobro" />
+    <AssociationSet Name="FK_CotizacionCobro_Cotizacion" Association="Self.FK_CotizacionCobro_Cotizacion">
+      <End Role="Cotizacion" EntitySet="Cotizacions" />
+      <End Role="CotizacionCobro" EntitySet="CotizacionCobroes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CotizacionDetalleCobro_CotizacionCobro" Association="Self.FK_CotizacionDetalleCobro_CotizacionCobro">
+      <End Role="CotizacionCobro" EntitySet="CotizacionCobroes" />
+      <End Role="CotizacionDetalleCobro" EntitySet="CotizacionDetalleCobroes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CotizacionDetalleCobro_Tarifa" Association="Self.FK_CotizacionDetalleCobro_Tarifa">
+      <End Role="Tarifa" EntitySet="Tarifas" />
+      <End Role="CotizacionDetalleCobro" EntitySet="CotizacionDetalleCobroes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tarifa_TipoCarga" Association="Self.FK_Tarifa_TipoCarga">
+      <End Role="TipoCarga" EntitySet="TipoCargas" />
+      <End Role="Tarifa" EntitySet="Tarifas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tarifa_TipoCobro" Association="Self.FK_Tarifa_TipoCobro">
+      <End Role="TipoCobro" EntitySet="TipoCobroes" />
+      <End Role="Tarifa" EntitySet="Tarifas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,124 @@
+﻿
+
+
+<div class="container" ng-app="angular.cotizacionController2" ng-controller="cotizacionController">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Cotizacion</h2>
+
+
+
+            <div class="container" ng-app="angular.cotizacionController2" ng-controller="cotizacionController">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Cotizacion</h2>
+                        <table class="table table-striped">
+
+                            <tr>
+                                <td><input type="text" placeholder="Nombre del Cliente" class="form-control" /></td>
+                                <td><input type="text" placeholder="Buque" class="form-control" /></td>
+                                <td><input type="text" placeholder="Viaje" class="form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Manifiesto" class="form-control" /></td>
+                                <td><input type="date" class="form-control" /></td>
+                            </tr>
+                        </table>
+
+
+                        <table class="table table-striped">
+
+                            <tr>
+                                <td>
+                                    <p>Tipo de Carga : </p>
+                                    <select class="form-control"
+                                            ng-model="listaTipoCarga.idTipoCarga"
+                                            ng-options="i.idTipoCarga as i.descripcion for i in listaTipoCarga"></select>
+                                </td>
+                                <td>{{listaTipoCarga.idTipoCarga}}</td>
+
+
+                                <td>
+                                    <p> Descripcion:</p> <input type="text" class="form-control" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Cantidad</p> <input type="number" class="form-control" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>
+                                        Unidad Peso : <select class="form-control"
+                                                              ng-model="unidadPeso.opciones.id "
+                                                              ng-options="i.id as i.unidad for i in unidadPeso.opciones"></select>
+                                </td>
+
+                                <td>
+                                    <p>Peso:</p>
+                                    <input type="text" class="form-control" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><p>Largo</p><input type="text" class="form-control" /></td>
+                                <td><p>Ancho</p><input type="text" class="form-control" /></td>
+                                <td><p>Alto</p><input type="text" class="form-control" /></td>
+                            </tr>
+                        </table>
+
+                        <h3>Productos a Cotizar</h3>
+
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>
+                                    <p>Tipo de Cobro:  <select class="form-control"
+                                            name="cobro"
+                                            ng-model="listaCobros.idTipoCobro"
+                                            ng-options="i.idTipoCobro as i.descripcion for i in listaCobros"></select>
+                                </td>
+                                <td>
+                                    <input type="submit" value="Agregar" class="btn btn-success" ng-click="sumar(listaCobros)"/>
+                                </td>
+                                <td>
+                                    <p>Total: </p><h1>{{Cotizacion}}</h1>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>
+                                     Descripcion de Servicio 
+                                </td>
+                                <td>
+                                    Valor
+                                </td>
+
+                            </tr>
+                            {{model | json}}
+                            <tr ng-repeat="item in model">
+                                <td>{{item.nombre}}</td>
+                                <td>{{item.total}}</td>
+
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+</div>
+
+    </div>
+</div>
+
+ 
